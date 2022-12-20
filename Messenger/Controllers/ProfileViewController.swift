@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    var any : String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
