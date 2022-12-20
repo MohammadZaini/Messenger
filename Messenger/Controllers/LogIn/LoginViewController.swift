@@ -88,6 +88,13 @@ class LoginViewController: UIViewController {
                                                             target: self,
                                                             action: #selector(didTapRegister))
         
+        loginButton.addTarget(self,
+                              action: #selector(loginButtonTapped),
+                              for: .touchUpInside)
+        
+        emailField.delegate = self
+        passwordField.delegate = self
+        
         //Add subviews
         view.addSubview(scrollView)
         view.addSubview(imageView)
@@ -121,6 +128,26 @@ class LoginViewController: UIViewController {
                                    height: 52)
     }
     
+    @objc private func loginButtonTapped() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
+        guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
+            alertUserLoginError()
+            return
+        }
+        // Firebase Log In
+        
+    }
+    
+    func alertUserLoginError() {
+        
+        let alert = UIAlertController(title: "Woops", message: "Please enter all infomation to log in", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+        present(alert, animated: true)
+    }
+    
     @objc private func didTapRegister() {
         
         let vc = RegisterViewController()
@@ -139,5 +166,21 @@ class LoginViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if passwordField == emailField {
+            
+        } else if textField == passwordField {
+            loginButtonTapped()
+        }
+        
+        
+        return true
+    }
     
 }
