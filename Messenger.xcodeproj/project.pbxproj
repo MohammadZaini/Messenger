@@ -19,6 +19,7 @@
 		CE619C892951FC6C00BACD56 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE619C882951FC6C00BACD56 /* VideoPlayerViewController.swift */; };
 		CE619C8B2951FCC700BACD56 /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE619C8A2951FCC700BACD56 /* NewConversationViewController.swift */; };
 		CE619C8D2951FCCF00BACD56 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE619C8C2951FCCF00BACD56 /* ProfileViewController.swift */; };
+		CE619C9029526D9000BACD56 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE619C8F29526D9000BACD56 /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CE619C882951FC6C00BACD56 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		CE619C8A2951FCC700BACD56 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		CE619C8C2951FCCF00BACD56 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CE619C8F29526D9000BACD56 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				CE619C692951F97D00BACD56 /* AppDelegate.swift */,
 				CE619C6B2951F97D00BACD56 /* SceneDelegate.swift */,
+				CE619C8F29526D9000BACD56 /* Extentions.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				CE619C832951FBF700BACD56 /* LoginViewController.swift in Sources */,
 				CE619C852951FC0900BACD56 /* RegisterViewController.swift in Sources */,
+				CE619C9029526D9000BACD56 /* Extentions.swift in Sources */,
 				CE619C8B2951FCC700BACD56 /* NewConversationViewController.swift in Sources */,
 				CE619C6E2951F97D00BACD56 /* ConversationsViewController.swift in Sources */,
 				CE619C892951FC6C00BACD56 /* VideoPlayerViewController.swift in Sources */,
