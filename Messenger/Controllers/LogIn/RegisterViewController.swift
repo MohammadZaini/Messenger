@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
@@ -115,6 +116,9 @@ class RegisterViewController: UIViewController {
         imageView.image = UIImage(systemName: "person")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
         
     }()
@@ -144,7 +148,7 @@ class RegisterViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(registerButton)
         
-        let gesture = UIGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
         imageView.addGestureRecognizer(gesture)
         imageView.isUserInteractionEnabled = true
         scrollView.isUserInteractionEnabled = true
@@ -153,8 +157,8 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func didTapChangeProfilePic() {
-        
-      print("change pic called")
+        print("working")
+        presentPhotoActionSheet()
     }
     
     override func viewDidLayoutSubviews() {
@@ -166,6 +170,7 @@ class RegisterViewController: UIViewController {
                                  width: size,
                                  height: size)
         
+        imageView.layer.cornerRadius = imageView.width/2.0
         
         firstNameField.frame = CGRect(x: 30,
                                       y: imageView.bottom+10,
@@ -215,6 +220,16 @@ class RegisterViewController: UIViewController {
         }
         // Firebase Log In
         
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResults, error in
+            
+            guard let result = authResults, error == nil else {
+                print("Error creating user")
+                return }
+            
+            let user = result.user
+            print("Created User:\(user)")
+        }
+        
     }
     
     func alertUserLoginError() {
@@ -261,8 +276,8 @@ extension RegisterViewController: UITextFieldDelegate {
     
 }
 
-
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func presentPhotoActionSheet() {
      let actionSheet = UIAlertController(title: "Profile Picture",
                                          message: "How would you like to select a picture",
@@ -303,6 +318,9 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        guard let selcetedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        self.imageView.image = selcetedImage
         
         
     }
