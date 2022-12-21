@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
@@ -95,9 +95,9 @@ class LoginViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
         
-        //Add subviews
+        //Add Subviews
         view.addSubview(scrollView)
-        view.addSubview(imageView)
+        scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)

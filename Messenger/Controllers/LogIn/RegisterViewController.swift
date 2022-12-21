@@ -121,7 +121,7 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                                                             style: .done,
@@ -137,7 +137,7 @@ class RegisterViewController: UIViewController {
         
         //Add subviews
         view.addSubview(scrollView)
-        view.addSubview(imageView)
+        scrollView.addSubview(imageView)
         scrollView.addSubview(firstNameField)
         scrollView.addSubview(lastNameField)
         scrollView.addSubview(emailField)
@@ -166,22 +166,22 @@ class RegisterViewController: UIViewController {
                                  width: size,
                                  height: size)
         
-        emailField.frame = CGRect(x: 30,
-                                  y: imageView.bottom+10,
-                                  width: scrollView.width-60,
-                                  height: 52)
         
         firstNameField.frame = CGRect(x: 30,
-                                      y: firstNameField.bottom+10,
+                                      y: imageView.bottom+10,
                                       width: scrollView.width-60,
                                       height: 52)
         
         lastNameField.frame = CGRect(x: 30,
-                                     y: lastNameField.bottom+10,
+                                     y: firstNameField.bottom+10,
                                      width: scrollView.width-60,
                                      height: 52)
         
         
+        emailField.frame = CGRect(x: 30,
+                                  y: lastNameField.bottom+10,
+                                  width: scrollView.width-60,
+                                  height: 52)
         
         passwordField.frame = CGRect(x: 30,
                                      y: emailField.bottom+10,
@@ -259,4 +259,54 @@ extension RegisterViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func presentPhotoActionSheet() {
+     let actionSheet = UIAlertController(title: "Profile Picture",
+                                         message: "How would you like to select a picture",
+                                         preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Cencel",
+                                            style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default, handler: { [weak self] _ in
+            self?.presentCamera()
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo",
+                                            style: .default, handler: { [weak self]_ in
+            self?.presentPhotoPicker()
+            
+        }))
+        
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+        
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
 }
