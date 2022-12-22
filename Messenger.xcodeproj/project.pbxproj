@@ -26,6 +26,8 @@
 		CE829526295345A1005E355D /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE829525295345A1005E355D /* FirebaseRemoteConfigSwift */; };
 		CE829528295345A1005E355D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CE829527295345A1005E355D /* FirebaseStorage */; };
 		CE82952A29534708005E355D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE82952929534707005E355D /* GoogleService-Info.plist */; };
+		CEF197E4295356E60061DEFF /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF197E3295356E60061DEFF /* DatabaseManager.swift */; };
+		CEF197E72954B6910061DEFF /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CEF197E62954B6910061DEFF /* FirebaseDatabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,7 @@
 		CE619C8C2951FCCF00BACD56 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CE619C8F29526D9000BACD56 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		CE82952929534707005E355D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEF197E3295356E60061DEFF /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF197E72954B6910061DEFF /* FirebaseDatabase in Frameworks */,
 				CE829520295345A1005E355D /* FirebaseAnalytics in Frameworks */,
 				CE829526295345A1005E355D /* FirebaseRemoteConfigSwift in Frameworks */,
 				CE829522295345A1005E355D /* FirebaseAuth in Frameworks */,
@@ -68,6 +72,7 @@
 			children = (
 				CE619C682951F97D00BACD56 /* Messenger */,
 				CE619C672951F97D00BACD56 /* Products */,
+				CEF197E52954B6910061DEFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +104,7 @@
 				CE619C692951F97D00BACD56 /* AppDelegate.swift */,
 				CE619C6B2951F97D00BACD56 /* SceneDelegate.swift */,
 				CE619C8F29526D9000BACD56 /* Extentions.swift */,
+				CEF197E3295356E60061DEFF /* DatabaseManager.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -149,6 +155,13 @@
 			path = LogIn;
 			sourceTree = "<group>";
 		};
+		CEF197E52954B6910061DEFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -171,6 +184,7 @@
 				CE829523295345A1005E355D /* FirebaseFirestore */,
 				CE829525295345A1005E355D /* FirebaseRemoteConfigSwift */,
 				CE829527295345A1005E355D /* FirebaseStorage */,
+				CEF197E62954B6910061DEFF /* FirebaseDatabase */,
 			);
 			productName = Messenger;
 			productReference = CE619C662951F97D00BACD56 /* Messenger.app */;
@@ -232,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE619C832951FBF700BACD56 /* LoginViewController.swift in Sources */,
+				CEF197E4295356E60061DEFF /* DatabaseManager.swift in Sources */,
 				CE619C852951FC0900BACD56 /* RegisterViewController.swift in Sources */,
 				CE619C9029526D9000BACD56 /* Extentions.swift in Sources */,
 				CE619C8B2951FCC700BACD56 /* NewConversationViewController.swift in Sources */,
@@ -497,6 +512,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE82951E295345A1005E355D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		CEF197E62954B6910061DEFF /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE82951E295345A1005E355D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
