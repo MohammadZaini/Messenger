@@ -220,7 +220,7 @@ class RegisterViewController: UIViewController {
         }
         // Firebase Log In
         
-        DatabaseManager.shared.userExists(with: email) { [weak self] exists in
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             
             guard let strongSelf = self else { return }
             
@@ -229,7 +229,7 @@ class RegisterViewController: UIViewController {
                 return }
             
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResults, error in
-            
+                print("working...")
                 guard authResults != nil, error == nil else {
                     print("Error creating user")
                     return }
@@ -240,12 +240,9 @@ class RegisterViewController: UIViewController {
                                                                          lastName: lastName,
                                                                          emailAdress: email))
                 
-               
             }
 
-        }
-        
-        
+        })
         
     }
     
@@ -264,16 +261,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 
